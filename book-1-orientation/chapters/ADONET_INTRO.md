@@ -4,9 +4,10 @@ This will be an interactive lesson. Your instructor will lead you through follow
 
 ## Instructions
 
-1. Open the [departments and employees](./assets/departments-employees.sql) SQL script and copy it into Azure Data Studio. Select the entire contents of the file and run it. This will create the database, and the tables, and insert some data.
+1. Use the [departments and employees](./assets/departments-employees.sql) SQL script to create a `DepartmentsEmployees` database.
 1. In Visual Studio, create a new console application called `DepartmentsEmployees`.
 1. In your terminal, navigate to the directory where you created your project. The directory will have a `DepartmentsEmployees.sln` file in it.
+1. `cd` into your project directory. When you list what's in the directory, you should see your `DepartmentsEmployees.csproj` and `Program.cs`.
 1. Run the following commands. This imports the required package needed to have your C# code connect to a SQL Server database.
     ```sh
     dotnet add package System.Data.SqlClient
@@ -160,8 +161,8 @@ namespace DepartmentsEmployees.Data
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    // String interpolation lets us inject the id passed into this method.
-                    cmd.CommandText = $"SELECT DeptName FROM Department WHERE Id = {id}";
+                    cmd.CommandText = "SELECT DeptName FROM Department WHERE Id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     Department department = null;
@@ -193,8 +194,10 @@ namespace DepartmentsEmployees.Data
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    // More string interpolation
-                    cmd.CommandText = $"INSERT INTO Department (DeptName) Values ('{department.DeptName}')";
+                    // These SQL parameters are annoying. Why can't we use string interpolation?
+                    // ... sql injection attacks!!!
+                    cmd.CommandText = "INSERT INTO Department (DeptName) Values (@deptName)";
+                    cmd.Parameters.Add(new SqlParameter("@deptName", department.DeptName));
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -212,17 +215,11 @@ namespace DepartmentsEmployees.Data
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    // Here we do something a little different...
-                    //  We're using a "parameterized" query to avoid SQL injection attacks.
-                    //  First, we add variable names with @ signs in our SQL.
-                    //  Then, we add SqlParamters for each of those variables.
                     cmd.CommandText = @"UPDATE Department
                                            SET DeptName = @deptName
                                          WHERE Id = @id";
                     cmd.Parameters.Add(new SqlParameter("@deptName", department.DeptName));
                     cmd.Parameters.Add(new SqlParameter("@id", id));
-
-                    // Maybe we should refactor our other SQL to use parameters
 
                     cmd.ExecuteNonQuery();
                 }
@@ -341,10 +338,10 @@ namespace DepartmentsEmployees.Data
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = $@"SELECT e.Id, e.FirstName, e.LastName, e.DepartmentId,
-                                                d.DeptName
-                                           FROM Employee e INNER JOIN Department d ON e.DepartmentID = d.id
-                                          WHERE d.id = @departmentId";
+                    cmd.CommandText = @"SELECT e.Id, e.FirstName, e.LastName, e.DepartmentId,
+                                               d.DeptName
+                                          FROM Employee e INNER JOIN Department d ON e.DepartmentID = d.id
+                                         WHERE d.id = @departmentId";
                     cmd.Parameters.Add(new SqlParameter("@departmentId", departmentId));
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -633,4 +630,3 @@ _                           | <span>ADO.NET</span>          | Micro-ORM (Dapper)
 **Degree of "Magic"**       | none                          | a little                                     | a lot
 **Pros**                    | Full control, best performance | Balance between control and ease of use      | Ease of use, Rapid development
 **Cons**                    | Lots of code to write         | Can lead to writing more code than is needed | Too much magic, Performance can suffer
-
