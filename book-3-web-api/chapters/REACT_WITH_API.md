@@ -281,3 +281,4 @@ function App() {
 2. Add a "Search Posts" feature to your app that uses the `/api/post/search` API endpoint.
 
 3. Update the Post component so that it includes the comments on each post.
+
