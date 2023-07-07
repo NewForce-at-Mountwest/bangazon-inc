@@ -42,7 +42,7 @@ In development, our React app will be running on port 3000 and our API will be r
 
 ## Adding Post Provider
 
-Make two directories under the `src` folder: `components` and `APIManagers`. In the prodivers directory create a file called `PostManager.js` and give it the following code
+Make two directories under the `src` folder: `components` and `APIManagers`. In the APIManager directory create a file called `PostManager.js` and give it the following code
 
 ```js
 import React from "react";
