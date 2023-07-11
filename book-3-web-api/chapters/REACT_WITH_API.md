@@ -234,7 +234,7 @@ Again, nothing fancy here; we're just using the Card component that comes with r
 Now lets update the `PostList` component to use the new `Post` component
 
 ```js
-import React, { useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getAllPosts } from "../ApiManagers/PostManager";
 import { Post } from "./Post";
 
