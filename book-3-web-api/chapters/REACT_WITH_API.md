@@ -102,7 +102,6 @@ Inside the components directory, create a file called `PostList.js` and add the 
 
 ```js
 import React, { useState, useEffect } from "react";
-import Post from './Post';
 import { getAllPosts } from "../APIManagers/PostManager";
 
 const PostList = () => {
@@ -172,13 +171,15 @@ We have our nice provider and component so lets use them. Replace App.js with th
 import React from "react";
 import "./App.css";
 import PostList from "./components/PostList";
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
-  return (
-    <div className="App">
-        <PostList />
-    </div>
-  );
+ render(
+  <BrowserRouter>
+    <PostList />
+  </BrowserRouter>,
+  document.getElementById('root')
+)
 }
 
 export default App;
