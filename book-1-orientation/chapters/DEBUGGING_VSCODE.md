@@ -6,13 +6,11 @@ _To follow along with the example code below, clone this repo_
 
 ## Visual Studio Code
 
-When first opening a C# project in VS Code, you may be presented with a dialog asking if you'd like to add assets that are required for debugging. Select Yes.
+When first opening a C# project in VS Code, you may be presented with a dialog asking if you'd like to add assets that are required for debugging. Select Yes. Please change your demodebugging.csproj from net5.0 on line 5 to net8.0. 
 
 ![VS Code Debug Dialog](./images/VsCodeDebugDialog.png)
 
-If you aren't presented with that window, you can select the Debugger icon on the left side of you VS Code window, hit the green Run button, and select .NET Core
-
-![VS Code Debug Start](./images/DebugLaunchSettings.gif)
+If you aren't presented with that window, you can select the Debugger icon on the left side of you VS Code window, hit the green Run button, and select C#
 
 
 
