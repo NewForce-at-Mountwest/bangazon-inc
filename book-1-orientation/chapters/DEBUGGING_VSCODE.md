@@ -14,21 +14,7 @@ If you aren't presented with that window, you can select the Debugger icon on th
 
 ![VS Code Debug Start](./images/DebugLaunchSettings.gif)
 
-This will create a `.vscode` folder in your project that contains a `launch.json` and a `tasks.json` file. 
 
-Open the `launch.json` file and find the "console" property. This propety can have 1 of 3 values
-
-- **"integratedConsole"**: The output from statements such as `Console.WriteLine` will show up in a VS Code window called the Debug Console
-
-- **"integratedTerminal"**: The output will show up in the terminal that is built into VS Code
-
-- **"externalTerminal"**: The output will show up in your normal terminal window outside of VS Code.
-
-For debugging most applications, you'll find the _intergratedTerminal_ option to be the most helpful. Set the console propety to that
-
-```json
-"console": "integratedTerminal",
-```
 
 ## Breakpoints
 
