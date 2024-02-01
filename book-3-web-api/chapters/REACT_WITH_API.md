@@ -174,7 +174,7 @@ import PostList from "./components/PostList";
 import { BrowserRouter } from 'react-router-dom'
 
 function App() {
- render(
+ return(
   <BrowserRouter>
     <PostList />
   </BrowserRouter>,
