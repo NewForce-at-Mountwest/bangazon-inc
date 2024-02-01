@@ -174,16 +174,32 @@ import PostList from "./components/PostList";
 import { BrowserRouter } from 'react-router-dom'
 
 function App() {
- return
-  <BrowserRouter>
+ return (
+<>
+<BrowserRouter>
     <PostList />
   </BrowserRouter>
+</>
+)
 }
 
 export default App;
 ```
+Now please go to Visual Studio Community (the purple one) and go into your solution explorer. Open up the properties folder and click into `launchSettings.json`. Replace the https code with this: 
 
-Make sure your API server is still running, and run `npm start` in your terminal.
+```
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:5001;http://localhost:5013",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+```
+Please relaunch your API (swagger) and run `npm start` in your terminal.
 
 ## Styling w/ Reactstrap
 
