@@ -174,12 +174,10 @@ import PostList from "./components/PostList";
 import { BrowserRouter } from 'react-router-dom'
 
 function App() {
- return(
+ return
   <BrowserRouter>
     <PostList />
-  </BrowserRouter>,
-  document.getElementById('root')
-)
+  </BrowserRouter>
 }
 
 export default App;
