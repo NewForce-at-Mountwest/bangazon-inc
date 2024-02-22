@@ -23,14 +23,6 @@ Most of these steps will require copying code from Tabloid and Gifter, so you ma
 
 > **NOTE:** The script(s) should be written such that they can be re-run as needed to recreate your database. _See the Gifter script for an example_
 
-
-## Set up Firebase
-
-1. Go to Firebase console and create a new project
-1. Enable a "Sign-in method"
-    > **NOTE:** In the course we used the `Email/Password` sign-in method.
-1. Go to project settings to view API Key and Project ID (you'll need these in future steps)
-
 ## Server Side
 
 1. Install Nuget Packages (Copy from Tabloid.csproj and/or Gifter.csproj)
