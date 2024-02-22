@@ -38,10 +38,8 @@ Most of these steps will require copying code from Tabloid and Gifter, so you ma
 
 1. Create client directory and run `npx create-react-app .`
 1. Setup proxy in `package.json`
-1. Install firebase and react router using `npm install react-router-dom firebase`
+1. Install react router using `npm install react-router-dom`
 1. Install whatever component library you want
-1. Create a `.env.local` file in your `client` folder (DON'T forget the leading `.`) and add the firebase API Key
-1. Update the `index.js` file to add the call to `firebase.initializeApp`
 1. Copy in `UserProfileProvider.js`, `Login.js`, `Register.js` from Tabloid (and optionally copy in the `Login.css` file if you want that bootstrap styling)
 1. Copy in `ApplicationViews.js` from Tabloid/Gifter and remove code that's not needed
 1. Modify `App.js` to use the `Router`, `UserProfileProvider`, and `ApplicationViews` components
