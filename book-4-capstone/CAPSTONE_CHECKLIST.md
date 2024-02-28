@@ -28,9 +28,9 @@ Most of these steps will require copying code from Tabloid and Gifter, so you ma
 1. Install Nuget Packages (Copy from Tabloid.csproj and/or Gifter.csproj)
 1. Add connection string to `appsettings.json`
 1. Create Models
-1. Update `Startup.cs` to call `UseAuthentication` before `UseAuthorization`
+1. Update `Program.cs` to utilize `Cors`
 1. Copy in the `UserProfileRepository`, `IUserProfileRepository` and `UserProfileController` from Tabloid/Gifter and modify as needed
-1. Register the `UserProfileRepository` with ASP.NET by calling `services.AddTransient` inside `Startup.cs`
+1. Register the `UserProfileRepository` with ASP.NET by calling `builder.Services.AddTransient` inside `Program.cs`
 
 > **NOTE:** Make sure to update the `namespace` of any classes you copy/paste from another project.
 
