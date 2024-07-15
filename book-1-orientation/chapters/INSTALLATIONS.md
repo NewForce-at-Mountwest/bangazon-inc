@@ -5,7 +5,7 @@
 
 1. Install .NET from https://dotnet.microsoft.com/download
    * Click the `Download .NET SDK x64` button under the large `.NET` header on the right side. 
-1. Open a terminal and run `dotnet --version`. You should see a version greater than or equal to `6.0.16`
+1. Open a terminal and run `dotnet --version`. You should see a version greater than or equal to `8.0.1`
 
 ## Visual Studio IDE
 
@@ -13,6 +13,7 @@
    > **INFO:** When installing Visual Studio, you will be presented with a variety of workloads. Select the following workloads.
    >
    > - ASP.NET and web development
+   > - .NET desktop development
 
 ## SQL Server Express Database
 
@@ -31,7 +32,7 @@ echo "dnignore() {
 You now have access in your terminal to a command called `dnignore` which will add a gitignore file to your project.
 
 
-## Bookmark the Following Sites
+## Helpful Sites
 
 [dbdiagram.io](http://dbdiagram.io) web application for creating ERDs (Entity Relationship Diagrams).
 
@@ -44,3 +45,5 @@ https://docs.microsoft.com/en-us/dotnet/
 - **Main page**: https://www.youtube.com/channel/UCvtT19MZW8dq5Wwfu6B0oxw
 - **C# 101**: https://www.youtube.com/watch?v=BM4CHBmAPh4&list=PLdo4fOZ0oVxKLQCHpiUWun7vlJJvUiN
 - **.NET 101**: https://www.youtube.com/watch?v=eIHKZfgddLM&list=PLdo4fOcmZ0oWoazjhXQzBKMrFuArxpW80
+
+Watching these will help but are not required viewing.

@@ -1,10 +1,10 @@
-# Bangazon Employee Handbook
+# Tabloid Employee Handbook
 
 ## Support & Guidance
 
 ### Mentoring
 
-Your manager is dedicated to providing all the mentoring and guidance that you need while you build the Bangazon Platform. This includes training you on foundational concepts, tooling and procedures. Your manager will also provide you will instruction to show you how to implement basic examples of code that you will need for a larger project.
+Your manager is dedicated to providing all the mentoring and guidance that you need while you build the Tabloid Platform. This includes training you on foundational concepts, tooling and procedures. Your manager will also provide you will instruction to show you how to implement basic examples of code that you will need for a larger project.
 
 ### Daily Stand Up
 
@@ -14,8 +14,7 @@ Your manager is responsible for making sure you have the resources that you need
 
 ### Retrospective
 
-Once your team completes a project (see Definition of Done below), your team, along with your manager, will conduct a [Retrospective](https://www.mountaingoatsoftware.com/agile/scrum/sprint-retrospective). Be sure to read the description of the retrospective before attending your first one.
-
+Once your team completes a project (see Definition of Done below), your team, along with your manager, will conduct a [Retrospective](https://www.mountaingoatsoftware.com/agile/scrum/sprint-retrospective). 
 ## Expectations of Work
 
 ### Definition of Done
@@ -29,7 +28,6 @@ There is a very clear [Definition of Done](https://www.agilealliance.org/glossar
 1. The project must be able to run fully, and without errors, on each teammate's system.
 1. Fulfills every requirement.
 1. Every line of code has been peer reviewed.
-1. For projects that require unit testing, core functionality must be identified and have at least one test for each.
 
 ### Pull Requests
 
