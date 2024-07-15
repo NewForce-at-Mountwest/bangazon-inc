@@ -25,7 +25,7 @@ This will create _(a.k.a. "scaffold")_ two files in the directory as well as an 
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     </Project>
