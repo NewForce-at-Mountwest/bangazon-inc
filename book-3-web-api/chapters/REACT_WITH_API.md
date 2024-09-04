@@ -42,7 +42,7 @@ In development, our React app will be running on port 5173 and our API will be r
 
 ## Adding Post Provider
 
-Make two directories under the `src` folder: `components` and `APIManagers`. In the APIManager directory create a file called `PostManager.js` and give it the following code
+Make two directories under the `src` folder: `components` and `services`. In the services directory create a file called `PostService.jsx` and give it the following code
 
 ```js
 import React from "react";
@@ -64,45 +64,17 @@ export const addPost = (singlePost) => {
   });
 };
 ```
-<!--  import React, { useState } from "react";
 
- export const PostContext = React.createContext();
-
- export const PostProvider = (props) => {
-   const [posts, setPosts] = useState([]);
-
-   const getAllPosts = () => {
-     return fetch("/api/post")
-       .then((res) => res.json())
-       .then(setPosts);
-   };
-
-   const addPost = (post) => {
-     return fetch("/api/post", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify(post),
-     });
-   };
-
-   return (
-     <PostContext.Provider value={{ posts, getAllPosts, addPost }}>
-       {props.children}
-     </PostContext.Provider>
-   );
- }; -->
 
 This providers the state value of the posts array, as well as methods to fetch all posts and add a new post. Note that the urls we are making requests to are relative urls--they don't have anything like `https://localhost:5001/api/posts`. This is a benefit of adding the `proxy` attribute in our package.json file.
 
 ## Adding a Posts List Component
 
-Inside the components directory, create a file called `PostList.js` and add the following code
+Inside the components directory, create a file called `PostList.jsx` and add the following code
 
 ```js
 import React, { useState, useEffect } from "react";
-import { getAllPosts } from "../APIManagers/PostManager";
+import { getAllPosts } from "../services/PostService";
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
@@ -134,42 +106,16 @@ const PostList = () => {
 
 export default PostList;
 ```
-<!-- import React, { useContext, useEffect } from "react";
-import { PostContext } from "../providers/PostProvider";
-
-const PostList = () => {
-  const { posts, getAllPosts } = useContext(PostContext);
-
-  useEffect(() => {
-    getAllPosts();
-  }, []);
-
-  return (
-    <div>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <img src={post.imageUrl} alt={post.title} />
-          <p>
-            <strong>{post.title}</strong>
-          </p>
-          <p>{post.caption}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default PostList; -->
 
 Nothing too fancy here. When the component loads, it will call the `getAllPosts` method it recieves from the provider and render a list of posts.
 
 ## Wiring It Up
 
-We have our nice provider and component so lets use them. Replace App.js with the following code
+We have our nice provider and component so lets use them. Replace main.jsx with the following code
 
 ```js
 import React from "react";
-import "./App.css";
+import "./index.css";
 import PostList from "./components/PostList";
 import { BrowserRouter } from 'react-router-dom'
 
@@ -199,7 +145,7 @@ Now please go to Visual Studio Community (the purple one) and go into your solut
       }
     },
 ```
-Please relaunch your API (swagger) and run `npm start` in your terminal.
+Please relaunch your API (swagger) and run `npm run dev` in your terminal.
 
 ## Styling w/ Reactstrap
 
@@ -209,7 +155,7 @@ Lets make our app look a little nicer. Install reactstrap by running the followi
 npm install --save bootstrap reactstrap
 ```
 
-Now import the css file into your `index.js` file
+Now import the css file into your `main.jsx` file
 
 ```js
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -217,7 +163,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 #### Making a Post Component
 
-Our posts might get a little more complex so it's probably a good idea to separate it out into it's own component. Create a `Post.js` file in the components directory with the following code
+Our posts might get a little more complex so it's probably a good idea to separate it out into it's own component. Create a `Post.jsx` file in the components directory with the following code
 
 ```js
 import React from "react";
@@ -249,7 +195,7 @@ Now lets update the `PostList` component to use the new `Post` component
 
 ```js
 import React, { useState, useEffect } from "react";
-import { getAllPosts } from "../ApiManagers/PostManager";
+import { getAllPosts } from "../services/PostService";
 import { Post } from "./Post";
 
 const PostList = () => {
@@ -280,17 +226,26 @@ export default PostList;
 
 ## Exercise
 
-1. Allow the user to add a new post. Create a `PostForm` component in the components directory and include it in App.js so that it shows up above the list of posts. Ex:
+1. Allow the user to add a new post. Create a `PostForm` component in the components directory and include it in main.jsx so that it shows up above the list of posts. Ex:
 
 ```js
+import React from "react";
+import "./index.css";
+import PostList from "./components/PostList";
+import { BrowserRouter } from 'react-router-dom'
+
 function App() {
-  return (
-    <div className="App">
-        {/* <AwesomeNewPostComponent/> */}
-        <PostList />
-    </div>
-  );
+ return (
+<>
+<BrowserRouter>
+    <PostList />
+{/* Super Cool Component you just made here */}
+  </BrowserRouter>
+</>
+)
 }
+
+export default App;
 ``` 
 
 2. Add a "Search Posts" feature to your app that uses the `/api/post/search` API endpoint.
