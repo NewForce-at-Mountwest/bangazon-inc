@@ -16,13 +16,8 @@ Let's add different routes to our Gifter application so that we can have certain
 - `/posts/add` Form for adding a new post
 - `/posts/{id}` Details for a single post with all comments
 
-Start by installing the React router package from npm. `cd` into your client directory and run
 
-```sh
-npm i react-router-dom
-```
-
-We can use the React router to only render certain views when a user is on a specific URL. Let's create a component that will specify this. Make a new file in your components directory and name it `ApplicationViews.js`
+We can use the React router to only render certain views when a user is on a specific URL. Let's create a component that will specify this. Make a new file in your components directory and name it `ApplicationViews.jsx`
 
 ```js
 import { Routes, Route, Navigate} from "react-router-dom";
@@ -53,30 +48,8 @@ return (
 export default ApplicationViews;
 
 ```
-<!-- import React from "react";
-import { Switch, Route } from "react-router-dom";
-import PostList from "./PostList";
-import PostForm from "./PostForm";
 
-const ApplicationViews = () => {
-  return (
-    <Switch>
-      <Route path="/" exact>
-        <PostList />
-      </Route>
-
-      <Route path="/posts/add">
-        <PostForm />
-      </Route>
-
-      <Route path="/posts/:id">{/* TODO: Post Details Component */}</Route>
-    </Switch>
-  );
-};
-
-export default ApplicationViews; -->
-
-A few things to note here. First, the `<'Routes'>` and `<Route>` components are ones we get from the npm module we just installed. The `Routes` component is going to look at the url and render the first route that is a match.
+A few things to note here. First, the `<'Routes'>` and `<Route>` components are ones we get from the npm module `react-router-dom`. The `Routes` component is going to look at the url and render the first route that is a match.
 
 
 Second thing to note is the `<Route>` component. If a url matches the value of the `path` attribute, the children of that `<Route>` will be what gets rendered. As we've seen before, URLs often have _route params_ in them. The third route here is an example of a path with a route param: `/posts/:id`. Using the colon, we can tell the react router that this will be some `id` parameter. These are all examples of paths that would match this route:
@@ -88,7 +61,7 @@ Second thing to note is the `<Route>` component. If a url matches the value of t
 **/posts/foo**
 
 
-To be able to use this `ApplicationViews` component, we have to import it into our `App.js` file and also wrap our entire app in a `<Router>` component.
+To be able to use this `ApplicationViews` component, we have to import it into our `App.jsx` file and also wrap our entire app in a `<Router>` component.
 
 > App.js
 
@@ -116,7 +89,7 @@ Run the app and go to `localhost:3000` and `localhost:3000/posts/add`
 
 ## Adding a Header Component
 
-We don't expect our users to manually type into their url bar every time they want to navigate through the app so let's create a navbar component. Add a `Header.js` file to your components directory.
+We don't expect our users to manually type into their url bar every time they want to navigate through the app so let's create a navbar component. Add a `Header.jsx` file to your components directory.
 
 > Header.js
 
@@ -283,7 +256,7 @@ The last thing we want to do with our new routing abilities, is create a `PostDe
 
 Before we make a Post Details component, let's add a function to our provider that makes that fetch call
 
-> PostManager.js
+> PostService.jsx
 
 ```js
 export const getPost = (id) => {
@@ -337,7 +310,7 @@ export const PostDetails = () => {
 
 Finally, we want to update each post in the feed to have a link to the details. Update the `Post` component to import the Link component from the react router and wrap the Title of each post in a `Link`.
 
-> Post.js
+> Post.jsx
 ```js
 import { Link } from "react-router-dom";
 ...
