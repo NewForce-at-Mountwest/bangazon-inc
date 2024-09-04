@@ -112,7 +112,7 @@ Nothing too fancy here. When the component loads, it will call the `getAllPosts`
 
 ## Wiring It Up
 
-We have our nice provider and component so lets use them. Replace main.jsx with the following code
+We have our nice provider and component so lets use them. Replace App.jsx with the following code
 
 ```js
 import React from "react";
@@ -227,7 +227,7 @@ export default PostList;
 
 ## Exercise
 
-1. Allow the user to add a new post. Create a `PostForm` component in the components directory and include it in main.jsx so that it shows up above the list of posts. Ex:
+1. Allow the user to add a new post. Create a `PostForm` component in the components directory and include it in App.jsx so that it shows up above the list of posts. Ex:
 
 ```js
 import React from "react";
